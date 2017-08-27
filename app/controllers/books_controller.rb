@@ -1,4 +1,7 @@
 class BooksController < ApplicationController
+
+  before_action :authorize!
+
   # GET /books
   def index
     @books = Book.all
