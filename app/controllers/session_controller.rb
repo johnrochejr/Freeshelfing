@@ -18,10 +18,11 @@ class SessionController < ApplicationController
       session[:user_id] = user.id
 
       # logged in!
-      redirect_to root_path
+      redirect_to books_path
     else
       # Nope, something went wrong
       redirect_to login_path
+      flash.alert = "Please signup to access book list"
     end
   end
 
@@ -29,6 +30,6 @@ class SessionController < ApplicationController
   def destroy
     # Remove their user_id from the session
     session[:user_id] = nil
-    redirect_to root_path
+    redirect_to login_path
   end
 end
